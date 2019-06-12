@@ -11,5 +11,11 @@ package Clases;
  */
 public class EliminarEstaClase {
     public int numero;
+
+    public EliminarEstaClase(int numero) {
+        this.numero = numero;
+    }
+    
+    
     
 }
