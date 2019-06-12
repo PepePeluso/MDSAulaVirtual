@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 import java.util.*;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /** @pdOid 020888c3-71dd-41eb-8ce2-c13dc4ad9836 */
@@ -13,6 +14,11 @@ public class AulaVirtual {
    private ArrayList<Reserva> reserva;
    /** @pdOid eb9fc35a-ce22-4488-85cc-a31ae12a1388 */
    private ArrayList<Profesor> profesores;
+
+    public AulaVirtual() {
+        this.reserva = new ArrayList<Reserva>();
+        this.profesores = new ArrayList<Profesor>();
+    }
    
    /** @pdOid f000ec14-357d-438e-b333-9c2fcb1e1c44 */
    public ArrayList<Reserva> getReserva() {
@@ -28,7 +34,7 @@ public class AulaVirtual {
    /** @param reserva
     * @pdOid e1134e06-c691-4028-876c-cec18ca6b053 */
    public boolean agregarReserva(Reserva reserva) {
-      // TODO: implement
+      this.reserva.add(reserva);
       return false;
    }
    
@@ -52,9 +58,16 @@ public class AulaVirtual {
    
    /** @param profesor
     * @pdOid 4ad1fa61-f24c-4860-9d80-e6a759477ed5 */
-   public boolean registroProfesor(Profesor profesor) {
-      // TODO: implement
-      return false;
+   public boolean AgregarProfesor(Profesor profesor) {
+       for (int i = 0; i < profesores.size(); i++) {
+          if(profesores.get(i).getCedula().equals(profesor.getCedula())){
+              JOptionPane.showMessageDialog(null,"Existe Profesor ya existe");
+              return false;
+                    } 
+       }
+       profesores.add(profesor);
+       JOptionPane.showMessageDialog(null,"Registro correcto");
+      return true;
    }
 
 }

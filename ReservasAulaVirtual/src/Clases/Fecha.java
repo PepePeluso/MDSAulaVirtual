@@ -14,7 +14,18 @@ public class Fecha implements Validaciones {
    private int mes;
    /** @pdOid 8692f08d-b59c-40c0-b31f-9efe3f6704ca */
    private int ano;
-   
+
+    public Fecha(int dia, int mes, int ano) {
+        this.dia = dia;
+        this.mes = mes;
+        this.ano = ano;
+    }
+   public Fecha() {
+         Calendar fecha=Calendar.getInstance();
+         ano=fecha.get(Calendar.YEAR);
+         mes=(fecha.get(Calendar.MONTH)+1);
+         dia=fecha.get(Calendar.DAY_OF_MONTH);
+    }
    /** @pdOid ff51c172-4534-48c1-b74c-72fb3db3d557 */
    public int getDia() {
       return dia;

@@ -20,11 +20,22 @@ public class Reserva implements Validaciones {
    private String cedula;
    /** @pdOid b25ef9eb-df46-470d-8a4e-249fadc8b8c1 */
    private String descripcion;
+
+    public Reserva(String dia, int inicio, int fin, String nombre, String cedula, String descripcion) {
+        this.dia = dia;
+        this.inicio = inicio;
+        this.fin = fin;
+        this.nombre = nombre;
+        this.cedula = cedula;
+        this.descripcion = descripcion;
+    }
    
    /** @pdOid c21e685c-3c3c-4b86-9f8f-0f5ce53dc4ee */
    public boolean validar() {
-      // TODO: implement
+     if(!(inicio>=fin))
       return false;
+     
+     return true;
    }
    
    /** @pdOid 317a0b2a-0df2-4548-8b82-06b95949bed0 */

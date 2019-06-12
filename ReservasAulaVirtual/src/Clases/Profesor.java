@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 import java.util.*;
+import javax.swing.JOptionPane;
 
 /** @pdOid 9cbfc43a-edb7-47a5-9d87-1fe7bde27c0e */
 public class Profesor implements Validaciones {
@@ -20,6 +21,15 @@ public class Profesor implements Validaciones {
    private String titulo;
    /** @pdOid 0ce211e7-fe81-4669-9f04-6aee2de4da5d */
    private Login login;
+
+    public Profesor(String nombre, String cedula, Fecha fechaNacimiento, String facultad, String titulo, Login login) {
+        this.nombre = nombre;
+        this.cedula = cedula;
+        this.fechaNacimiento = fechaNacimiento;
+        this.facultad = facultad;
+        this.titulo = titulo;
+        this.login = login;
+    }
    
    /** @pdOid 5119b705-49c7-43a4-8fe2-1957fd6e1625 */
    public String getNombre() {
@@ -89,7 +99,75 @@ public class Profesor implements Validaciones {
 
     @Override
     public boolean validar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(verificarCedula(cedula)){     
+            return false;
+        }
+        if(!(calcularEdad()>=24)){
+        JOptionPane.showMessageDialog(null, "Su edad debe ser mayor o igual a 24");
+        return false;
+        }
+        if(login.validar()){
+        return false;
+        }
+        return true;
+        }
+    public boolean verificarCedula(String cedula) {
+        boolean cedulaCorrecta = false;
+
+        try {
+
+            if (cedula.length() == 10) // ConstantesApp.LongitudCedula
+            {
+                int tercerDigito = Integer.parseInt(cedula.substring(2, 3));
+                if (tercerDigito < 6) {
+                   // Coeficientes de validación cédula
+                   // El decimo digito se lo considera dígito verificador
+                    int[] coefValCedula = {2, 1, 2, 1, 2, 1, 2, 1, 2};
+                    int verificador = Integer.parseInt(cedula.substring(9, 10));
+                    int suma = 0;
+                    int digito = 0;
+                    for (int i = 0; i < (cedula.length() - 1); i++) {
+                        digito = Integer.parseInt(cedula.substring(i, i + 1)) * coefValCedula[i];
+                        suma += ((digito % 10) + (digito / 10));
+                    }
+
+                    if ((suma % 10 == 0) && (suma % 10 == verificador)) {
+                        cedulaCorrecta = true;
+                    } else if ((10 - (suma % 10)) == verificador) {
+                        cedulaCorrecta = true;
+                    } else {
+                        cedulaCorrecta = false;
+                    }
+                } else {
+                    cedulaCorrecta = false;
+                }
+            } else {
+                cedulaCorrecta = false;
+            }
+        } catch (NumberFormatException nfe) {
+            cedulaCorrecta = false;
+        } catch (Exception err) {
+            JOptionPane.showMessageDialog(null,"Una excepcion ocurrio en el proceso de validadcion");
+            cedulaCorrecta = false;
+        }
+
+        if (!cedulaCorrecta) {
+            JOptionPane.showMessageDialog(null,"La Cédula ingresada es Incorrecta");
+        }
+        return cedulaCorrecta;
+        
+    }
+
+    /**
+     * @pdOid 0436374d-6a7a-40de-8a80-7d1858d0ea24
+     */
+    public int calcularEdad() {
+       Calendar c = new GregorianCalendar();
+        if (((c.get(Calendar.DATE) <= fechaNacimiento.getDia() && c.get(Calendar.MONTH) <= fechaNacimiento.getMes()))) {
+            return c.get(Calendar.YEAR) - fechaNacimiento.getAno();
+        } else {
+            return (c.get(Calendar.YEAR) - fechaNacimiento.getAno()) - 1;
+        }
     }
 
 }
