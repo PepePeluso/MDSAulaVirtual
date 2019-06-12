@@ -61,7 +61,7 @@ public class AulaVirtual {
    public boolean AgregarProfesor(Profesor profesor) {
        for (int i = 0; i < profesores.size(); i++) {
           if(profesores.get(i).getCedula().equals(profesor.getCedula())){
-              JOptionPane.showMessageDialog(null,"Existe Profesor ya existe");
+              JOptionPane.showMessageDialog(null,"El Profesor ya existe");
               return false;
                     } 
        }
