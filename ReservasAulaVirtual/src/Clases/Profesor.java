@@ -87,4 +87,9 @@ public class Profesor implements Validaciones {
       login = newLogin;
    }
 
+    @Override
+    public boolean validar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
