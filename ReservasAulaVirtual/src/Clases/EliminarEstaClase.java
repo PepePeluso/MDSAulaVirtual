@@ -10,5 +10,6 @@ package Clases;
  * @author Pepe Peluso
  */
 public class EliminarEstaClase {
+    public int numero;
     
 }
