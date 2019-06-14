@@ -139,7 +139,9 @@ public class frmAulaVirtul extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(rSPanelGradiente1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(rSPanelGradiente1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -156,10 +158,20 @@ public class frmAulaVirtul extends javax.swing.JFrame {
 
     private void btnRegistrarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarProfesorActionPerformed
         // TODO add your handling code here:
+        ubicacionVentana = this.getLocationOnScreen();
+        frmRegistrarProfesor frp = new frmRegistrarProfesor();
+        frp.setLocation(ubicacionVentana);
+        frp.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnRegistrarProfesorActionPerformed
 
     private void btnRegistrarAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarAulaActionPerformed
         // TODO add your handling code here:
+        ubicacionVentana = this.getLocationOnScreen();
+        frmLoginProfesor flp = new frmLoginProfesor();
+        flp.setLocation(ubicacionVentana);
+        flp.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnRegistrarAulaActionPerformed
 
     private void lblAulaVirtualMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAulaVirtualMousePressed
