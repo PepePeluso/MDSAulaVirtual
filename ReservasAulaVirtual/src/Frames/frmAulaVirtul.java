@@ -5,8 +5,7 @@
  */
 package Frames;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import java.awt.Point;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,14 +18,12 @@ public class frmAulaVirtul extends javax.swing.JFrame {
      * Creates new form frmAulaVirtul
      */
     int x,y;
+    Point ubicacionVentana;
     public frmAulaVirtul() {
         initComponents();
-        
         rsutilities.RSUtilities.setMoverVentana(this);
-        
-        rsutilities.RSUtilities.setCentrarVentana(this);
         rsutilities.RSUtilities.setOpaqueVentana(this, false);
-        
+        pnlLogoUTN.requestFocus();
     }
 
     /**
@@ -109,7 +106,7 @@ public class frmAulaVirtul extends javax.swing.JFrame {
         });
         rSPanelGradiente1.add(lblAulaVirtual, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 11, 590, 150));
 
-        btnLoginAdmin.setText("Login Administrativo");
+        btnLoginAdmin.setText("Log in Administrativo");
         btnLoginAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLoginAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,6 +147,11 @@ public class frmAulaVirtul extends javax.swing.JFrame {
 
     private void btnLoginAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginAdminActionPerformed
         // TODO add your handling code here:
+        ubicacionVentana = this.getLocationOnScreen();
+        frmLoginAdministrador fla = new frmLoginAdministrador();
+        fla.setLocation(ubicacionVentana);
+        fla.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnLoginAdminActionPerformed
 
     private void btnRegistrarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarProfesorActionPerformed

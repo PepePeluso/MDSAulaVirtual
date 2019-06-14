@@ -151,7 +151,7 @@ public class frmLoginAdministrador extends javax.swing.JFrame {
     private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
         // TODO add your handling code here:
         int conf = JOptionPane.showConfirmDialog(null, "Está seguro de cerrar el programa",
-                "Confirmación", JOptionPane.YES_NO_OPTION);
+                "Opción", JOptionPane.YES_NO_OPTION);
         if (conf == 0) {
             System.exit(0);
         }

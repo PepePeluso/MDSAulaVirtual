@@ -137,7 +137,7 @@
         </Component>
         <Component class="rojerusan.RSMaterialButtonRound" name="btnLoginAdmin">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Login Administrativo"/>
+            <Property name="text" type="java.lang.String" value="Log in Administrativo"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Cursor de Mano"/>
             </Property>
