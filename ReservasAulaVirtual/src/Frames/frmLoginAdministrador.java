@@ -43,9 +43,10 @@ public class frmLoginAdministrador extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtUsuarioAdmin = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        pswContrasena = new javax.swing.JPasswordField();
+        pswContrasenaAdmin = new javax.swing.JPasswordField();
         rSMaterialButtonRound1 = new rojerusan.RSMaterialButtonRound();
         chkMostrarContra = new javax.swing.JCheckBox();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -112,7 +113,7 @@ public class frmLoginAdministrador extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Usuario");
         rSPanelGradiente1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 400, -1));
-        rSPanelGradiente1.add(pswContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 400, -1));
+        rSPanelGradiente1.add(pswContrasenaAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 400, -1));
 
         rSMaterialButtonRound1.setText("Log in");
         rSMaterialButtonRound1.addActionListener(new java.awt.event.ActionListener() {
@@ -134,6 +135,11 @@ public class frmLoginAdministrador extends javax.swing.JFrame {
         });
         rSPanelGradiente1.add(chkMostrarContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Administrador");
+        rSPanelGradiente1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 150, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -142,7 +148,9 @@ public class frmLoginAdministrador extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(rSPanelGradiente1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(rSPanelGradiente1, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -164,11 +172,16 @@ public class frmLoginAdministrador extends javax.swing.JFrame {
 
     private void btnAtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAtrasMouseClicked
         // TODO add your handling code here:
-        ubicacionVentana = this.getLocationOnScreen();
-        frmAulaVirtul fav = new frmAulaVirtul();
-        fav.setLocation(ubicacionVentana);
-        fav.setVisible(true);
-        this.dispose();
+        int conf = JOptionPane.showConfirmDialog(null, "Está seguro de volver a "
+                + "la pantalla principal", "Opción", JOptionPane.YES_NO_OPTION);
+        if (conf == 0) {
+            ubicacionVentana = this.getLocationOnScreen();
+            frmAulaVirtul fav = new frmAulaVirtul();
+            fav.setLocation(ubicacionVentana);
+            fav.setVisible(true);
+            this.dispose();
+        }
+        
     }//GEN-LAST:event_btnAtrasMouseClicked
 
     private void rSMaterialButtonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRound1ActionPerformed
@@ -178,9 +191,9 @@ public class frmLoginAdministrador extends javax.swing.JFrame {
     private void chkMostrarContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMostrarContraActionPerformed
         // TODO add your handling code here:
         if (chkMostrarContra.isSelected()){
-            pswContrasena.setEchoChar((char)0);
+            pswContrasenaAdmin.setEchoChar((char)0);
         } else {
-            pswContrasena.setEchoChar('*');
+            pswContrasenaAdmin.setEchoChar('*');
         }
     }//GEN-LAST:event_chkMostrarContraActionPerformed
 
@@ -229,7 +242,8 @@ public class frmLoginAdministrador extends javax.swing.JFrame {
     private javax.swing.JCheckBox chkMostrarContra;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPasswordField pswContrasena;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPasswordField pswContrasenaAdmin;
     private rojerusan.RSMaterialButtonRound rSMaterialButtonRound1;
     private rspanelgradiente.RSPanelGradiente rSPanelGradiente1;
     private rojerusan.RSPanelImage rSPanelImage1;
