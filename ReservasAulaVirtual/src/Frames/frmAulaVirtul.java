@@ -5,6 +5,10 @@
  */
 package Frames;
 
+import java.util.Timer;
+import java.util.TimerTask;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Pepe Peluso
@@ -14,8 +18,15 @@ public class frmAulaVirtul extends javax.swing.JFrame {
     /**
      * Creates new form frmAulaVirtul
      */
+    int x,y;
     public frmAulaVirtul() {
         initComponents();
+        
+        rsutilities.RSUtilities.setMoverVentana(this);
+        
+        rsutilities.RSUtilities.setCentrarVentana(this);
+        rsutilities.RSUtilities.setOpaqueVentana(this, false);
+        
     }
 
     /**
@@ -28,43 +39,151 @@ public class frmAulaVirtul extends javax.swing.JFrame {
     private void initComponents() {
 
         rSPanelGradiente1 = new rspanelgradiente.RSPanelGradiente();
-        rSFotoCircle1 = new rojerusan.RSFotoCircle();
+        pnlLogoUTN = new rojerusan.RSPanelImage();
+        jSeparator1 = new javax.swing.JSeparator();
+        btnCerrar = new javax.swing.JLabel();
+        btnMinimizar = new javax.swing.JLabel();
+        lblAulaVirtual = new javax.swing.JLabel();
+        btnLoginAdmin = new rojerusan.RSMaterialButtonRound();
+        btnRegistrarProfesor = new rojerusan.RSMaterialButtonRound();
+        btnRegistrarAula = new rojerusan.RSMaterialButtonRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         rSPanelGradiente1.setColorPrimario(new java.awt.Color(204, 255, 255));
         rSPanelGradiente1.setColorSecundario(new java.awt.Color(153, 153, 255));
+        rSPanelGradiente1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout rSPanelGradiente1Layout = new javax.swing.GroupLayout(rSPanelGradiente1);
-        rSPanelGradiente1.setLayout(rSPanelGradiente1Layout);
-        rSPanelGradiente1Layout.setHorizontalGroup(
-            rSPanelGradiente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(rSPanelGradiente1Layout.createSequentialGroup()
-                .addGap(311, 311, 311)
-                .addComponent(rSFotoCircle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(340, Short.MAX_VALUE))
+        pnlLogoUTN.setImagen(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/utn.png"))); // NOI18N
+
+        javax.swing.GroupLayout pnlLogoUTNLayout = new javax.swing.GroupLayout(pnlLogoUTN);
+        pnlLogoUTN.setLayout(pnlLogoUTNLayout);
+        pnlLogoUTNLayout.setHorizontalGroup(
+            pnlLogoUTNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
         );
-        rSPanelGradiente1Layout.setVerticalGroup(
-            rSPanelGradiente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(rSPanelGradiente1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(rSFotoCircle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(476, Short.MAX_VALUE))
+        pnlLogoUTNLayout.setVerticalGroup(
+            pnlLogoUTNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
         );
+
+        rSPanelGradiente1.add(pnlLogoUTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
+        rSPanelGradiente1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 179, 760, 10));
+
+        btnCerrar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnCerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnCerrar.setText("X");
+        btnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCerrarMouseClicked(evt);
+            }
+        });
+        rSPanelGradiente1.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 20, 20));
+
+        btnMinimizar.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
+        btnMinimizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnMinimizar.setText("-");
+        btnMinimizar.setToolTipText("");
+        btnMinimizar.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btnMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinimizarMouseClicked(evt);
+            }
+        });
+        rSPanelGradiente1.add(btnMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 20, 20));
+
+        lblAulaVirtual.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        lblAulaVirtual.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAulaVirtual.setText("Aula Virtual");
+        lblAulaVirtual.setToolTipText("");
+        lblAulaVirtual.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                lblAulaVirtualMouseDragged(evt);
+            }
+        });
+        lblAulaVirtual.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblAulaVirtualMousePressed(evt);
+            }
+        });
+        rSPanelGradiente1.add(lblAulaVirtual, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 11, 590, 150));
+
+        btnLoginAdmin.setText("Login Administrativo");
+        btnLoginAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLoginAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginAdminActionPerformed(evt);
+            }
+        });
+        rSPanelGradiente1.add(btnLoginAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 207, 400, -1));
+
+        btnRegistrarProfesor.setText("Registrar Profesor");
+        btnRegistrarProfesor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarProfesorActionPerformed(evt);
+            }
+        });
+        rSPanelGradiente1.add(btnRegistrarProfesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 347, 400, -1));
+
+        btnRegistrarAula.setText("Registrar Uso de Aula Virtual");
+        btnRegistrarAula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarAulaActionPerformed(evt);
+            }
+        });
+        rSPanelGradiente1.add(btnRegistrarAula, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 486, 400, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(rSPanelGradiente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(rSPanelGradiente1, javax.swing.GroupLayout.PREFERRED_SIZE, 778, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(rSPanelGradiente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(rSPanelGradiente1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLoginAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLoginAdminActionPerformed
+
+    private void btnRegistrarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarProfesorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrarProfesorActionPerformed
+
+    private void btnRegistrarAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarAulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrarAulaActionPerformed
+
+    private void lblAulaVirtualMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAulaVirtualMousePressed
+        // TODO add your handling code here:
+        x = evt.getX();
+        y = evt.getY(); 
+    }//GEN-LAST:event_lblAulaVirtualMousePressed
+
+    private void lblAulaVirtualMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAulaVirtualMouseDragged
+        // TODO add your handling code here:
+        this.setLocation(this.getLocation().x + evt.getX() - x, this.getLocation().y + evt.getY() - y);
+    }//GEN-LAST:event_lblAulaVirtualMouseDragged
+
+    private void btnMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizarMouseClicked
+        // TODO add your handling code here:
+        this.setExtendedState(ICONIFIED);
+    }//GEN-LAST:event_btnMinimizarMouseClicked
+
+    private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
+        // TODO add your handling code here:
+        int conf = JOptionPane.showConfirmDialog(null, "Está seguro de cerrar el programa", 
+                "Confirmación", JOptionPane.YES_NO_OPTION);
+        if (conf == 0){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_btnCerrarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -102,7 +221,14 @@ public class frmAulaVirtul extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private rojerusan.RSFotoCircle rSFotoCircle1;
+    private javax.swing.JLabel btnCerrar;
+    private rojerusan.RSMaterialButtonRound btnLoginAdmin;
+    private javax.swing.JLabel btnMinimizar;
+    private rojerusan.RSMaterialButtonRound btnRegistrarAula;
+    private rojerusan.RSMaterialButtonRound btnRegistrarProfesor;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblAulaVirtual;
+    private rojerusan.RSPanelImage pnlLogoUTN;
     private rspanelgradiente.RSPanelGradiente rSPanelGradiente1;
     // End of variables declaration//GEN-END:variables
 }
