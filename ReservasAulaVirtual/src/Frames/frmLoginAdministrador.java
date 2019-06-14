@@ -52,6 +52,7 @@ public class frmLoginAdministrador extends javax.swing.JFrame {
 
         rSPanelGradiente1.setColorPrimario(new java.awt.Color(204, 255, 255));
         rSPanelGradiente1.setColorSecundario(new java.awt.Color(153, 153, 255));
+        rSPanelGradiente1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         rSPanelGradiente1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnAtras.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -121,7 +122,11 @@ public class frmLoginAdministrador extends javax.swing.JFrame {
         });
         rSPanelGradiente1.add(rSMaterialButtonRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 480, 410, 40));
 
+        chkMostrarContra.setBackground(new java.awt.Color(255, 255, 255));
         chkMostrarContra.setText("Mostrar Contraseña");
+        chkMostrarContra.setBorder(null);
+        chkMostrarContra.setFocusable(false);
+        chkMostrarContra.setOpaque(false);
         chkMostrarContra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkMostrarContraActionPerformed(evt);
