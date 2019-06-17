@@ -6,6 +6,9 @@
 package Clases;
 
 import Frames.frmAulaVirtul;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 
 /**
  *
@@ -13,6 +16,13 @@ import Frames.frmAulaVirtul;
  */
 public class Main {
     public static void main(String[] LoQueTocaHacerPorlosEfectos){
+        try {
+            NimbusLookAndFeel nb = new NimbusLookAndFeel();
+            UIManager.setLookAndFeel(nb);
+        } catch (UnsupportedLookAndFeelException e) {
+            System.out.println("La falla mi pana :c");
+        }
+        
         frmAulaVirtul fav = new frmAulaVirtul();
         rsutilities.RSUtilities.setCentrarVentana(fav);
         Animacion.Fade.JFrameFadeIn(0, 1, 0.1f, 1, fav);
