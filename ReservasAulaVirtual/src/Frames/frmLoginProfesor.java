@@ -203,6 +203,7 @@ public class frmLoginProfesor extends javax.swing.JFrame {
                 ubicacionVentana = this.getLocationOnScreen();
                 frmRegistrarAulaVirtual rav = new frmRegistrarAulaVirtual();
                 rav.setAulaVirtual(av);
+                rav.setUsuario(i);
                 rav.setLocation(ubicacionVentana);
                 rav.setVisible(true);
                 this.dispose();

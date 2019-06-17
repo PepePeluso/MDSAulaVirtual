@@ -60,7 +60,7 @@ public class AulaVirtual {
             if (this.reserva.get(i) != null) {
                 if (this.reserva.get(i).getCedula().equals(reserva.getCedula())) {
                     con1++;
-                    i = Dia(Diaau(l));
+                    i = Dia(Diaau(l))-1;
                     c = 0;
                     l++;
                 }
@@ -90,6 +90,7 @@ public class AulaVirtual {
 
         if ((this.reserva.get(Dia(reserva.getDia()) + (reserva.getInicio() - 7)) == null) && (this.reserva.get(Dia(reserva.getDia()) + (reserva.getFin() - 8)) == null)) {
             this.reserva.add(Dia(reserva.getDia()) + (reserva.getInicio() - 7), reserva);
+            this.reserva.remove(Dia(reserva.getDia()) + (reserva.getFin() - 8));
             this.reserva.add(Dia(reserva.getDia()) + (reserva.getFin() - 8), reserva);
             JOptionPane.showMessageDialog(null, "Agregado correctamente");
             return true;

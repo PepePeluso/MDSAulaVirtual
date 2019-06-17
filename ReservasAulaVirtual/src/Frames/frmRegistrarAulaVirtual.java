@@ -24,6 +24,7 @@ public class frmRegistrarAulaVirtual extends javax.swing.JFrame {
     Point ubicacionVentana;
     DefaultTableModel modeloHorario;
     AulaVirtual av;
+    int u;
     public frmRegistrarAulaVirtual() {
         initComponents();
         rsutilities.RSUtilities.setMoverVentana(this);
@@ -40,6 +41,9 @@ public class frmRegistrarAulaVirtual extends javax.swing.JFrame {
         av = aula;
         av.tablaReservas(modeloHorario);
     }
+    public void setUsuario (int num){
+        u =num ;
+       }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -248,10 +252,17 @@ public class frmRegistrarAulaVirtual extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtrasMouseClicked
 
     private void btnAgregarHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarHorarioActionPerformed
-        // TODO add your handling code here:
-        //Reserva r = new Reserva(cbnDia.getSelectedItem().toString(),
-        //        Integer.parseInt(txtHInicio.getText()), 
-        //        Integer.parseInt(txtHFin.getText()), nombre, cedula, descripcion)
+        try {
+            Reserva r = new Reserva(cbnDia.getSelectedItem().toString(),
+                Integer.parseInt(txtHInicio.getText()), 
+              Integer.parseInt(txtHFin.getText()),av.getProfesores().get(u).getNombre(), av.getProfesores().get(u).getCedula(),txaDescripcion.getText());
+        if(r.validar()){
+        av.agregarReserva(r);
+        av.tablaReservas(modeloHorario);
+        }
+        } catch (Exception e) {
+        }
+        
     }//GEN-LAST:event_btnAgregarHorarioActionPerformed
 
     /**
