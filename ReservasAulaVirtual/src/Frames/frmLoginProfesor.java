@@ -5,6 +5,7 @@
  */
 package Frames;
 
+import Clases.AulaVirtual;
 import java.awt.Point;
 import javax.swing.JOptionPane;
 
@@ -19,13 +20,19 @@ public class frmLoginProfesor extends javax.swing.JFrame {
      */
     int x, y;
     Point ubicacionVentana;
+    AulaVirtual av;
 
     public frmLoginProfesor() {
         initComponents();
         rsutilities.RSUtilities.setMoverVentana(this);
         rsutilities.RSUtilities.setOpaqueVentana(this, false);
+        av = null;
     }
 
+    public void setAulaVirtual (AulaVirtual aula){
+        av = aula;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -190,6 +197,18 @@ public class frmLoginProfesor extends javax.swing.JFrame {
 
     private void rSMaterialButtonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRound1ActionPerformed
         // TODO add your handling code here:
+        for (int i = 0; i < av.getProfesores().size(); i++) {
+            if (av.getProfesores().get(i).getLogin().comparar(txtUsuarioProfesor.getText(),
+                    pswContrasenaProfesor.getText())){
+                ubicacionVentana = this.getLocationOnScreen();
+                frmRegistrarAulaVirtual rav = new frmRegistrarAulaVirtual();
+                rav.setAulaVirtual(av);
+                rav.setLocation(ubicacionVentana);
+                rav.setVisible(true);
+                this.dispose();
+            }
+        }
+        
     }//GEN-LAST:event_rSMaterialButtonRound1ActionPerformed
 
     private void chkMostrarContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMostrarContraActionPerformed

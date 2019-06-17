@@ -5,6 +5,7 @@
  */
 package Frames;
 
+import Clases.AulaVirtual;
 import java.awt.Point;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -20,13 +21,17 @@ public class frmRegistrarProfesor extends javax.swing.JFrame {
      */
     int x, y;
     Point ubicacionVentana;
-
+    AulaVirtual av;
     public frmRegistrarProfesor() {
         initComponents();
         rsutilities.RSUtilities.setMoverVentana(this);
         rsutilities.RSUtilities.setOpaqueVentana(this, false);
         ((JTextField)dchFechaNacimiento.getDateEditor()).setEditable(false);
-        
+        av = null;
+    }
+    
+    public void setAulaVirtual (AulaVirtual aula){
+        av = aula;
     }
 
     /**

@@ -144,9 +144,6 @@ public class AulaVirtual {
      * @pdOid 260ef10d-72e3-4380-b203-e108d535efd4
      */
     public void tablaReservas(DefaultTableModel tabla) {
-        for (int i = 0; i < 15; i++) {
-            tabla.setValueAt((i+7)+"-"+(i+8), i, 0);
-        }
         int h = 0;
         int d = 1;
         for (int i = 0; i < reserva.size(); i++) {
@@ -156,7 +153,7 @@ public class AulaVirtual {
                 tabla.setValueAt("Libre", h, d);
             }
             h++;
-            if (h == 13) {
+            if (h == 14) {
                 h = 0;
                 d++;
             }

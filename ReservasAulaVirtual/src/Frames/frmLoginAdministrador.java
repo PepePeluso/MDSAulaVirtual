@@ -5,6 +5,7 @@
  */
 package Frames;
 
+import Clases.AulaVirtual;
 import java.awt.Point;
 import javax.swing.JOptionPane;
 
@@ -19,13 +20,17 @@ public class frmLoginAdministrador extends javax.swing.JFrame {
      */
     int x, y;
     Point ubicacionVentana;
-
+    AulaVirtual av;
     public frmLoginAdministrador() {
         initComponents();
         rsutilities.RSUtilities.setMoverVentana(this);
         rsutilities.RSUtilities.setOpaqueVentana(this, false);
+        av = null;
     }
 
+    public void setAulaVirtual(AulaVirtual aula) {
+        av = aula;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

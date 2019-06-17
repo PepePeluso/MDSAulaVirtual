@@ -5,6 +5,10 @@
  */
 package Frames;
 
+import Clases.AulaVirtual;
+import Clases.Fecha;
+import Clases.Login;
+import Clases.Profesor;
 import java.awt.Point;
 import javax.swing.JOptionPane;
 
@@ -19,12 +23,20 @@ public class frmAulaVirtul extends javax.swing.JFrame {
      */
     int x,y;
     Point ubicacionVentana;
+    AulaVirtual av;
+    
+    Fecha f = new Fecha();
+    Login l = new Login("1750112938", "1750112938");
+    Profesor p = new Profesor("P", "1750112938", f, "FICA", "D", l);
     public frmAulaVirtul() {
         initComponents();
         rsutilities.RSUtilities.setMoverVentana(this);
         rsutilities.RSUtilities.setOpaqueVentana(this, false);
         pnlLogoUTN.requestFocus();
+        av = new AulaVirtual();
+        av.AgregarProfesor(p);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -151,6 +163,7 @@ public class frmAulaVirtul extends javax.swing.JFrame {
         // TODO add your handling code here:
         ubicacionVentana = this.getLocationOnScreen();
         frmLoginAdministrador fla = new frmLoginAdministrador();
+        fla.setAulaVirtual(av);
         fla.setLocation(ubicacionVentana);
         fla.setVisible(true);
         this.dispose();
@@ -160,6 +173,7 @@ public class frmAulaVirtul extends javax.swing.JFrame {
         // TODO add your handling code here:
         ubicacionVentana = this.getLocationOnScreen();
         frmRegistrarProfesor frp = new frmRegistrarProfesor();
+        frp.setAulaVirtual(av);
         frp.setLocation(ubicacionVentana);
         frp.setVisible(true);
         this.dispose();
@@ -169,6 +183,7 @@ public class frmAulaVirtul extends javax.swing.JFrame {
         // TODO add your handling code here:
         ubicacionVentana = this.getLocationOnScreen();
         frmLoginProfesor flp = new frmLoginProfesor();
+        flp.setAulaVirtual(av);
         flp.setLocation(ubicacionVentana);
         flp.setVisible(true);
         this.dispose();
