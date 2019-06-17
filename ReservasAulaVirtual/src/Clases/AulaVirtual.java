@@ -36,7 +36,27 @@ public class AulaVirtual {
    public boolean agregarReserva(Reserva reserva) {
        int con1=0;
        for (int i = 0; i < this.reserva.size(); i++) {
-           if(con1=3)
+           if(this.reserva.get(i)!=null){
+           if(this.reserva.get(i).getCedula().equals(reserva.getCedula())){
+           con1++;
+           }
+           }
+           if(con1==3){
+           JOptionPane.showMessageDialog(null,"Solo se puede hacer 3 Reservas a la semana");
+           return false;
+            }
+       }
+       int con2=0;
+       for (int i = Dia(reserva.getDia()); i < (Dia(reserva.getDia())+14); i++) {
+           if(this.reserva.get(i)!=null){
+           if(this.reserva.get(i).getCedula().equals(reserva.getCedula())){
+           con2++;
+           }
+           }
+           if(con2==1){
+           JOptionPane.showMessageDialog(null,"Solo una reserva por dia");
+           return false;
+            }
        }
        
        
