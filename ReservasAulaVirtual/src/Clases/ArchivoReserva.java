@@ -32,49 +32,41 @@ public class ArchivoReserva {
             }
             fw = new FileWriter(f, true);
             bw = new BufferedWriter(fw);
-            bw.write(nuevo.getNombreConcurso() + ";"
-                    + nuevo.getFechaInicio().getAño() + ";"
-                    + nuevo.getFechaInicio().getMes() + ";"
-                    + nuevo.getFechaInicio().getDia() + ";"
-                    + nuevo.getFechaFinal().getAño() + ";"
-                    + nuevo.getFechaFinal().getMes() + ";"
-                    + nuevo.getFechaFinal().getDia() + ";"
-                    + nuevo.getReglasConcurso() + ";"
-                    + nuevo.getValorConcurso() + ";"
-                    + nuevo.getDescripcionConcurso());
+            bw.write(nuevo.getDia() + ";"
+                    + nuevo.getInicio() + ";"
+                    + nuevo.getFin() + ";"
+                    + nuevo.getNombre() + ";"
+                    + nuevo.getCedula() + ";"
+                    + nuevo.getDescripcion());
             bw.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al escribir el archivo");
         }
     }
 
-    public void Mostrar(DefaultTableModel modeloConcurso) {
-        while (modeloConcurso.getRowCount() > 0) {
-            modeloConcurso.removeRow(0);
+    public void Mostrar(DefaultTableModel modeloReserva) {
+        while (modeloReserva.getRowCount() > 0) {
+            modeloReserva.removeRow(0);
         }
         try {
-            File f = new File("concurso.cvs");
+            File f = new File("reserva.cvs");
             if (f.exists()) {
                 FileReader fr = new FileReader(f);
                 BufferedReader br = new BufferedReader(fr);
                 String Linea;
                 while ((Linea = br.readLine()) != null) {
                     String[] concur = Linea.split(";");
-                    Fecha f1, f2;
                     Reserva c = new Reserva(
                             concur[0],
-                            f1 = new Fecha(Integer.parseInt(concur[3]), Integer.parseInt(concur[2]), Integer.parseInt(concur[1])),
-                            f2 = new Fecha(Integer.parseInt(concur[6]), Integer.parseInt(concur[5]), Integer.parseInt(concur[4])),
-                            concur[7],
-                            Double.parseDouble(concur[8]),
-                            concur[9]);
+                            Integer.parseInt(concur[1]),
+                            Integer.parseInt(concur[2]),
+                            concur[3],
+                            concur[4],
+                            concur[5]);
 
-                    modeloConcurso.addRow(new Object[]{
+                    modeloReserva.addRow(new Object[]{
                         concur[0],
-                        concur[6]+"/"+concur[5]+"/"+concur[4],
-                        concur[3]+"/"+concur[2]+"/"+concur[1],
-                        concur[8],
-                        concur[9]
+                        concur[3]
                     });
                 }
             }
@@ -87,21 +79,20 @@ public class ArchivoReserva {
     public ArrayList<Reserva> concur(){
         ArrayList<Reserva> a = new ArrayList<>();
         try {
-            File f = new File("concurso.cvs");
+            File f = new File("reserva.cvs");
             if (f.exists()) {
                 FileReader fr = new FileReader(f);
                 BufferedReader br = new BufferedReader(fr);
                 String Linea;
                 while ((Linea = br.readLine()) != null) {
                     String[] concur = Linea.split(";");
-                    Fecha f1, f2;
                     a.add(new Reserva(
                             concur[0],
-                            f1 = new Fecha(Integer.parseInt(concur[3]), Integer.parseInt(concur[2]), Integer.parseInt(concur[1])),
-                            f2 = new Fecha(Integer.parseInt(concur[6]), Integer.parseInt(concur[5]), Integer.parseInt(concur[4])),
-                            concur[7],
-                            Double.parseDouble(concur[8]),
-                            concur[9]));
+                            Integer.parseInt(concur[1]),
+                            Integer.parseInt(concur[2]),
+                            concur[3],
+                            concur[4],
+                            concur[5]));
                 }
             }
         } catch (Exception e) {
