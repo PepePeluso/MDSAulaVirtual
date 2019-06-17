@@ -7,6 +7,7 @@ package Frames;
 
 import java.awt.Point;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -24,6 +25,8 @@ public class frmRegistrarProfesor extends javax.swing.JFrame {
         initComponents();
         rsutilities.RSUtilities.setMoverVentana(this);
         rsutilities.RSUtilities.setOpaqueVentana(this, false);
+        ((JTextField)dchFechaNacimiento.getDateEditor()).setEditable(false);
+        
     }
 
     /**
@@ -46,7 +49,6 @@ public class frmRegistrarProfesor extends javax.swing.JFrame {
         rSMaterialButtonRound1 = new rojerusan.RSMaterialButtonRound();
         chkMostrarContra = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
-        rdcFechaNacimiento = new rojerusan.RSDateChooser();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -56,6 +58,7 @@ public class frmRegistrarProfesor extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         pswRegistrarContrasena = new javax.swing.JPasswordField();
         jComboBox1 = new javax.swing.JComboBox<>();
+        dchFechaNacimiento = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -117,8 +120,12 @@ public class frmRegistrarProfesor extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Verificar Contraseña");
         rSPanelGradiente1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 470, 400, -1));
-        rSPanelGradiente1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 400, -1));
-        rSPanelGradiente1.add(pswVerificarContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, 400, -1));
+
+        txtNombre.setBorder(null);
+        rSPanelGradiente1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 400, 20));
+
+        pswVerificarContrasena.setBorder(null);
+        rSPanelGradiente1.add(pswVerificarContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, 400, 20));
 
         rSMaterialButtonRound1.setText("Registrar Profesor");
         rSMaterialButtonRound1.addActionListener(new java.awt.event.ActionListener() {
@@ -144,12 +151,6 @@ public class frmRegistrarProfesor extends javax.swing.JFrame {
         jLabel4.setText("Nombre");
         rSPanelGradiente1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 400, -1));
 
-        rdcFechaNacimiento.setColorBackground(new java.awt.Color(153, 153, 255));
-        rdcFechaNacimiento.setColorButtonHover(new java.awt.Color(0, 0, 0));
-        rdcFechaNacimiento.setColorDiaActual(new java.awt.Color(204, 255, 255));
-        rdcFechaNacimiento.setColorTextDiaActual(new java.awt.Color(0, 0, 0));
-        rSPanelGradiente1.add(rdcFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 400, 20));
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("Cédula");
         rSPanelGradiente1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 400, -1));
@@ -161,21 +162,33 @@ public class frmRegistrarProfesor extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setText("Facultad");
         rSPanelGradiente1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 400, -1));
-        rSPanelGradiente1.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 400, -1));
+
+        txtCedula.setBorder(null);
+        rSPanelGradiente1.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 400, 20));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel8.setText("Título");
         rSPanelGradiente1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 400, -1));
-        rSPanelGradiente1.add(txtTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 400, -1));
+
+        txtTitulo1.setBorder(null);
+        rSPanelGradiente1.add(txtTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 400, 20));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Contraseña");
         rSPanelGradiente1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, 400, -1));
-        rSPanelGradiente1.add(pswRegistrarContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 440, 400, -1));
+
+        pswRegistrarContrasena.setBorder(null);
+        rSPanelGradiente1.add(pswRegistrarContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 440, 400, 20));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FICA", "FICAYA", "FACAE", "FECYT", "FCCSS" }));
         jComboBox1.setBorder(null);
+        jComboBox1.setFocusable(false);
+        jComboBox1.setOpaque(false);
         rSPanelGradiente1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 400, -1));
+
+        dchFechaNacimiento.setFocusable(false);
+        dchFechaNacimiento.setOpaque(false);
+        rSPanelGradiente1.add(dchFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 400, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -240,43 +253,6 @@ public class frmRegistrarProfesor extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmRegistrarProfesor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmRegistrarProfesor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmRegistrarProfesor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmRegistrarProfesor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -291,6 +267,7 @@ public class frmRegistrarProfesor extends javax.swing.JFrame {
     private javax.swing.JLabel btnCerrar;
     private javax.swing.JLabel btnMinimizar;
     private javax.swing.JCheckBox chkMostrarContra;
+    private com.toedter.calendar.JDateChooser dchFechaNacimiento;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -304,7 +281,6 @@ public class frmRegistrarProfesor extends javax.swing.JFrame {
     private rojerusan.RSMaterialButtonRound rSMaterialButtonRound1;
     private rspanelgradiente.RSPanelGradiente rSPanelGradiente1;
     private rojerusan.RSPanelImage rSPanelImage1;
-    private rojerusan.RSDateChooser rdcFechaNacimiento;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTitulo1;
