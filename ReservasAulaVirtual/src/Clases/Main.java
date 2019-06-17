@@ -5,8 +5,8 @@
  */
 package Clases;
 
-import Frames.frmAulaVirtul;
-import rojerusan.RSAnimation;
+
+
 
 /**
  *
@@ -14,11 +14,7 @@ import rojerusan.RSAnimation;
  */
 public class Main {
     public static void main(String[] LoQueTocaHacerPorlosEfectos){
-        frmAulaVirtul fav = new frmAulaVirtul();
-        rsutilities.RSUtilities.setCentrarVentana(fav);
-        Animacion.Fade.JFrameFadeIn(0, 1, 0.1f, 1, fav);
-        fav.setOpacity(0);
-        fav.setVisible(true);
+        
     }
     
 }
