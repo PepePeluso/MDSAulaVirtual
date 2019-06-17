@@ -16,7 +16,7 @@ public class AulaVirtual {
    private ArrayList<Profesor> profesores;
 
     public AulaVirtual() {
-        this.reserva = new ArrayList<Reserva>();
+        this.reserva = new ArrayList<Reserva>(70);
         this.profesores = new ArrayList<Profesor>();
     }
    
@@ -34,8 +34,40 @@ public class AulaVirtual {
    /** @param reserva
     * @pdOid e1134e06-c691-4028-876c-cec18ca6b053 */
    public boolean agregarReserva(Reserva reserva) {
-      this.reserva.add(reserva);
-      return false;
+       int con1=0;
+       for (int i = 0; i < this.reserva.size(); i++) {
+           if(con1=3)
+       }
+       
+       
+       if(this.reserva.get(Dia(reserva.getDia())+(reserva.getInicio()-7))==null){
+       this.reserva.add(Dia(reserva.getDia())+(reserva.getInicio()-7), reserva);
+       JOptionPane.showMessageDialog(null, "Agregado correctamente");
+       return true;
+       }else{
+        JOptionPane.showMessageDialog(null, "Esta ocupado");
+       return false;
+       }
+      
+      
+   }
+   public int Dia(String dia){
+   if(dia.equals("Lunes")){
+   return 0;
+   }
+   if(dia.equals("Martes ")){
+   return 14;
+   }
+   if(dia.equals("Miercoles")){
+   return 28;
+   }
+   if(dia.equals("Jueves")){
+   return 42;
+   }
+   if(dia.equals("Viernes")){
+   return 56;
+   }
+   return -1;
    }
    
    /** @param tabla 
