@@ -35,16 +35,26 @@ public class AulaVirtual {
     * @pdOid e1134e06-c691-4028-876c-cec18ca6b053 */
    public boolean agregarReserva(Reserva reserva) {
        int con1=0;
+       int c=0;
+       int l=1;
        for (int i = 0; i < this.reserva.size(); i++) {
            if(this.reserva.get(i)!=null){
            if(this.reserva.get(i).getCedula().equals(reserva.getCedula())){
-           con1++;
-           }
+               con1++;
+              i=Dia(Diaau(l));
+              c=0;
+              l++;        
+            }
            }
            if(con1==3){
            JOptionPane.showMessageDialog(null,"Solo se puede hacer 3 Reservas a la semana");
            return false;
             }
+           c++;
+           if(c==13){
+           l++;
+           c=0;
+           }
        }
        int con2=0;
        for (int i = Dia(reserva.getDia()); i < (Dia(reserva.getDia())+14); i++) {
@@ -60,8 +70,9 @@ public class AulaVirtual {
        }
        
        
-       if(this.reserva.get(Dia(reserva.getDia())+(reserva.getInicio()-7))==null){
+       if((this.reserva.get(Dia(reserva.getDia())+(reserva.getInicio()-7))==null)&&(this.reserva.get(Dia(reserva.getDia())+(reserva.getFin()-8))==null)){
        this.reserva.add(Dia(reserva.getDia())+(reserva.getInicio()-7), reserva);
+       this.reserva.add(Dia(reserva.getDia())+(reserva.getFin()-8), reserva);
        JOptionPane.showMessageDialog(null, "Agregado correctamente");
        return true;
        }else{
@@ -88,6 +99,24 @@ public class AulaVirtual {
    return 56;
    }
    return -1;
+   }
+    public String Diaau(int l){
+   if(l==1){
+   return "Lunes";
+   }
+   if(l==2){
+   return "Martes";
+   }
+   if(l==3){
+   return "Miercoles";
+   }
+   if(l==4){
+   return "Jueves";
+   }
+   if(l==5){
+   return "Viernes";
+   }
+   return "";
    }
    
    /** @param tabla 
