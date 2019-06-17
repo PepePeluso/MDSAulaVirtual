@@ -6,7 +6,6 @@ package Clases;
  * Purpose: Defines the Class AulaVirtual
  ***********************************************************************/
 
-import Clases.Reserva;
 import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -21,6 +20,9 @@ public class AulaVirtual {
     public AulaVirtual() {
         this.reserva = new ArrayList<>(70);
         this.profesores = new ArrayList<>();
+        for (int i = 0; i < 70; i++) {
+            reserva.add(null);
+        }
     }
    
    /**
@@ -51,7 +53,7 @@ public class AulaVirtual {
               l++;        
             }
            }
-           if(con1==3){
+           if(con1==4){
            JOptionPane.showMessageDialog(null,"Solo se puede hacer 3 Reservas a la semana");
            return false;
             }
@@ -63,7 +65,7 @@ public class AulaVirtual {
        }
        int con2=0;
        for (int i = Dia(reserva.getDia()); i < (Dia(reserva.getDia())+14); i++) {
-           if(this.reserva.get(i)!=null){
+           if(this.reserva.get(i) != null){
            if(this.reserva.get(i).getCedula().equals(reserva.getCedula())){
            con2++;
            }
@@ -91,7 +93,7 @@ public class AulaVirtual {
    if(dia.equals("Lunes")){
    return 0;
    }
-   if(dia.equals("Martes ")){
+   if(dia.equals("Martes")){
    return 14;
    }
    if(dia.equals("Miercoles")){

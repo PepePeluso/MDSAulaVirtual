@@ -35,8 +35,8 @@ public class Reserva implements Validaciones {
    
    /** @pdOid c21e685c-3c3c-4b86-9f8f-0f5ce53dc4ee */
    public boolean validar() {
-     if(!(inicio>fin)){
-        JOptionPane.showMessageDialog(null,"Hora de inicio debe ser mayor a hora de fin"); 
+     if(!(fin>inicio)){
+        JOptionPane.showMessageDialog(null,"Hora de fin debe ser mayor a hora de inicio"); 
       return false;
      }
     if(!(fin-inicio==1 ||fin-inicio==2)) {
