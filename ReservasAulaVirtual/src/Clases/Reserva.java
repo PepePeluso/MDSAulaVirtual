@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 import java.util.*;
+import javax.swing.JOptionPane;
 
 /** @pdOid 8e87daa4-f348-42ec-b75f-cc487f0d58d2 */
 public class Reserva implements Validaciones {
@@ -32,9 +33,22 @@ public class Reserva implements Validaciones {
    
    /** @pdOid c21e685c-3c3c-4b86-9f8f-0f5ce53dc4ee */
    public boolean validar() {
-     if(!(inicio>=fin))
+     if(!(inicio>fin)){
+        JOptionPane.showMessageDialog(null,"Hora de inicio debe ser mayor a hora de fin"); 
       return false;
-     
+     }
+    if(!(fin-inicio==1 ||fin-inicio==2)) {
+        JOptionPane.showMessageDialog(null,"Maximo 2 horas");
+        return false;
+    }
+    if(!(inicio>=7&&inicio<21)){
+        JOptionPane.showMessageDialog(null,"Solo se alquila desde las 7 hasta 21 horas");
+       return false; 
+    }
+    if(!(fin>7&&fin<=21)){
+        JOptionPane.showMessageDialog(null,"Solo se alquila desde las 7 hasta 21 horas");
+        return false;
+    }
      return true;
    }
    
