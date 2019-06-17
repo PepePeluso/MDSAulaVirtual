@@ -1,3 +1,5 @@
+package Clases;
+
 /***********************************************************************
  * Module:  Profesor.java
  * Author:  Diego Castillo

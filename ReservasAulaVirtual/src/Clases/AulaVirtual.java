@@ -1,9 +1,12 @@
+package Clases;
+
 /***********************************************************************
  * Module:  AulaVirtual.java
  * Author:  Diego Castillo
  * Purpose: Defines the Class AulaVirtual
  ***********************************************************************/
 
+import Clases.Reserva;
 import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -16,11 +19,12 @@ public class AulaVirtual {
    private ArrayList<Profesor> profesores;
 
     public AulaVirtual() {
-        this.reserva = new ArrayList<Reserva>(70);
-        this.profesores = new ArrayList<Profesor>();
+        this.reserva = new ArrayList<>(70);
+        this.profesores = new ArrayList<>();
     }
    
-   /** @pdOid f000ec14-357d-438e-b333-9c2fcb1e1c44 */
+   /**
+     * @return  *  @pdOid f000ec14-357d-438e-b333-9c2fcb1e1c44 */
    public ArrayList<Reserva> getReserva() {
       return reserva;
    }
@@ -31,7 +35,8 @@ public class AulaVirtual {
       reserva = newReserva;
    }
    
-   /** @param reserva
+   /** *  @param reserva
+     * @return 
     * @pdOid e1134e06-c691-4028-876c-cec18ca6b053 */
    public boolean agregarReserva(Reserva reserva) {
        int con1=0;
@@ -126,7 +131,8 @@ public class AulaVirtual {
       // TODO: implement
    }
    
-   /** @pdOid ae09298e-530a-42da-8a2c-cd2835c3e83e */
+   /**
+     * @return  *  @pdOid ae09298e-530a-42da-8a2c-cd2835c3e83e */
    public ArrayList<Profesor> getProfesores() {
       return profesores;
    }
@@ -137,7 +143,8 @@ public class AulaVirtual {
       profesores = newProfesores;
    }
    
-   /** @param profesor
+   /** *  @param profesor
+     * @return 
     * @pdOid 4ad1fa61-f24c-4860-9d80-e6a759477ed5 */
    public boolean AgregarProfesor(Profesor profesor) {
        for (int i = 0; i < profesores.size(); i++) {

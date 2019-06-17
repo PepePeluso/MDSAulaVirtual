@@ -1,3 +1,5 @@
+package Clases;
+
 /***********************************************************************
  * Module:  Validaciones.java
  * Author:  Diego Castillo
