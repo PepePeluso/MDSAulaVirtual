@@ -10,6 +10,7 @@ import Clases.Reserva;
 import java.awt.Point;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Pepe Peluso
  */
-public class frmRegistrarAulaVirtual extends javax.swing.JFrame {
+public class frmRegistrarAulaVirtual extends javax.swing.JFrame implements Serializable{
 
     /**
      * Creates new form frmAulaVirtul
@@ -235,13 +236,14 @@ public class frmRegistrarAulaVirtual extends javax.swing.JFrame {
         int conf = JOptionPane.showConfirmDialog(null, "Está seguro de cerrar el programa",
                 "Opción", JOptionPane.YES_NO_OPTION);
         if (conf == 0) {
-            System.exit(0);
-            try {
+             try {
             ObjectOutputStream Guardar = new ObjectOutputStream(new FileOutputStream("archivo.conc"));
             Guardar.writeObject(av);
             Guardar.close();
         } catch (Exception e) {
         }
+            System.exit(0);
+           
         }
     }//GEN-LAST:event_btnCerrarMouseClicked
 

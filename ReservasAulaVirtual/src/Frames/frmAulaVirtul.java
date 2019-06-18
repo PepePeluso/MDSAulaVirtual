@@ -14,13 +14,14 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Pepe Peluso
  */
-public class frmAulaVirtul extends javax.swing.JFrame {
+public class frmAulaVirtul extends javax.swing.JFrame implements Serializable {
 
     /**
      * Creates new form frmAulaVirtul
@@ -29,9 +30,7 @@ public class frmAulaVirtul extends javax.swing.JFrame {
     Point ubicacionVentana;
     AulaVirtual av;
     
-    Fecha f = new Fecha();
-    Login l = new Login("1750112938", "1750112938");
-    Profesor p = new Profesor("P", "1750112938", f, "FICA", "D", l);
+   
     public frmAulaVirtul() {
         initComponents();
         rsutilities.RSUtilities.setMoverVentana(this);
@@ -45,7 +44,7 @@ public class frmAulaVirtul extends javax.swing.JFrame {
             av = new AulaVirtual();    
        }
         
-        av.AgregarProfesor(p);
+        
     }
    public void setAulaVirtual (AulaVirtual aula){
         av = aula;
@@ -223,13 +222,14 @@ public class frmAulaVirtul extends javax.swing.JFrame {
         int conf = JOptionPane.showConfirmDialog(null, "Está seguro de cerrar el programa", 
                 "Confirmación", JOptionPane.YES_NO_OPTION);
         if (conf == 0){
-            System.exit(0);
             try {
             ObjectOutputStream Guardar = new ObjectOutputStream(new FileOutputStream("archivo.conc"));
             Guardar.writeObject(av);
             Guardar.close();
         } catch (Exception e) {
         }
+            System.exit(0);
+            
         }
     }//GEN-LAST:event_btnCerrarMouseClicked
 
