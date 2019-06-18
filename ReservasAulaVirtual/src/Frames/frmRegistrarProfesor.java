@@ -134,6 +134,11 @@ public class frmRegistrarProfesor extends javax.swing.JFrame implements Serializ
         rSPanelGradiente1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 470, 400, -1));
 
         txtNombre.setBorder(null);
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
         rSPanelGradiente1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 400, 20));
 
         pswVerificarContrasena.setBorder(null);
@@ -176,6 +181,11 @@ public class frmRegistrarProfesor extends javax.swing.JFrame implements Serializ
         rSPanelGradiente1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 400, -1));
 
         txtCedula.setBorder(null);
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyTyped(evt);
+            }
+        });
         rSPanelGradiente1.add(txtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 400, 20));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -183,6 +193,11 @@ public class frmRegistrarProfesor extends javax.swing.JFrame implements Serializ
         rSPanelGradiente1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 400, -1));
 
         txtTitulo1.setBorder(null);
+        txtTitulo1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTitulo1KeyTyped(evt);
+            }
+        });
         rSPanelGradiente1.add(txtTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 400, 20));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -281,6 +296,21 @@ public class frmRegistrarProfesor extends javax.swing.JFrame implements Serializ
             pswRegistrarContrasena.setEchoChar('*');
         }
     }//GEN-LAST:event_chkMostrarContraActionPerformed
+
+    private void txtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyTyped
+ char validar=evt.getKeyChar();
+        if(!Character.isDigit(validar))evt.consume();       
+    }//GEN-LAST:event_txtCedulaKeyTyped
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+       char validar=evt.getKeyChar();
+        if(!Character.isLetter(validar))evt.consume();
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtTitulo1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTitulo1KeyTyped
+        char validar=evt.getKeyChar();
+        if(!Character.isLetter(validar)&&!Character.isSpaceChar(validar))evt.consume();
+    }//GEN-LAST:event_txtTitulo1KeyTyped
 
     /**
      * @param args the command line arguments

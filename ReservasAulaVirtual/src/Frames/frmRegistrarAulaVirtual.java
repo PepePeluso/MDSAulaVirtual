@@ -177,6 +177,11 @@ public class frmRegistrarAulaVirtual extends javax.swing.JFrame implements Seria
         rSPanelGradiente1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, 100, -1));
 
         txtHFin.setBorder(null);
+        txtHFin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtHFinKeyTyped(evt);
+            }
+        });
         rSPanelGradiente1.add(txtHFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 340, 120, 20));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -202,6 +207,11 @@ public class frmRegistrarAulaVirtual extends javax.swing.JFrame implements Seria
         rSPanelGradiente1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 110, -1));
 
         txtHInicio.setBorder(null);
+        txtHInicio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtHInicioKeyTyped(evt);
+            }
+        });
         rSPanelGradiente1.add(txtHInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 120, 20));
 
         cbnDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes" }));
@@ -276,6 +286,16 @@ public class frmRegistrarAulaVirtual extends javax.swing.JFrame implements Seria
         }
         
     }//GEN-LAST:event_btnAgregarHorarioActionPerformed
+
+    private void txtHInicioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHInicioKeyTyped
+        char validar=evt.getKeyChar();
+        if(!Character.isDigit(validar))evt.consume();
+    }//GEN-LAST:event_txtHInicioKeyTyped
+
+    private void txtHFinKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHFinKeyTyped
+        char validar=evt.getKeyChar();
+        if(!Character.isDigit(validar))evt.consume();
+    }//GEN-LAST:event_txtHFinKeyTyped
 
     /**
      * @param args the command line arguments
