@@ -36,7 +36,9 @@ public class frmAulaVirtul extends javax.swing.JFrame {
         av = new AulaVirtual();
         av.AgregarProfesor(p);
     }
-    
+   public void setAulaVirtual (AulaVirtual aula){
+        av = aula;
+          }
 
     /**
      * This method is called from within the constructor to initialize the form.

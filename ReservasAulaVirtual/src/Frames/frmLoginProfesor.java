@@ -190,14 +190,15 @@ public class frmLoginProfesor extends javax.swing.JFrame {
             frmAulaVirtul fav = new frmAulaVirtul();
             fav.setLocation(ubicacionVentana);
             fav.setVisible(true);
+            fav.setAulaVirtual(av);
             this.dispose();
         }
         
     }//GEN-LAST:event_btnAtrasMouseClicked
 
     private void rSMaterialButtonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRound1ActionPerformed
-        // TODO add your handling code here:
-        for (int i = 0; i < av.getProfesores().size(); i++) {
+        try {
+             for (int i = 0; i < av.getProfesores().size(); i++) {
             if (av.getProfesores().get(i).getLogin().comparar(txtUsuarioProfesor.getText(),
                     pswContrasenaProfesor.getText())){
                 ubicacionVentana = this.getLocationOnScreen();
@@ -209,6 +210,9 @@ public class frmLoginProfesor extends javax.swing.JFrame {
                 this.dispose();
             }
         }
+        } catch (Exception e) {
+        }
+       
         
     }//GEN-LAST:event_rSMaterialButtonRound1ActionPerformed
 

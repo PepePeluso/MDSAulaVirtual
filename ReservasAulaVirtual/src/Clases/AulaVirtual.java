@@ -89,6 +89,7 @@ public class AulaVirtual {
         }
 
         if ((this.reserva.get(Dia(reserva.getDia()) + (reserva.getInicio() - 7)) == null) && (this.reserva.get(Dia(reserva.getDia()) + (reserva.getFin() - 8)) == null)) {
+            this.reserva.remove(Dia(reserva.getDia()) + (reserva.getFin() - 7));
             this.reserva.add(Dia(reserva.getDia()) + (reserva.getInicio() - 7), reserva);
             this.reserva.remove(Dia(reserva.getDia()) + (reserva.getFin() - 8));
             this.reserva.add(Dia(reserva.getDia()) + (reserva.getFin() - 8), reserva);
@@ -145,20 +146,24 @@ public class AulaVirtual {
      * @pdOid 260ef10d-72e3-4380-b203-e108d535efd4
      */
     public void tablaReservas(DefaultTableModel tabla) {
+     
         int h = 0;
         int d = 1;
         for (int i = 0; i < reserva.size(); i++) {
-            if (reserva.get(i) != null) {
-                tabla.setValueAt(reserva.get(i).getNombre(), h, d);
-            } else {
+           if (!(reserva.get(i) == null)) {
+                tabla.setValueAt(reserva.get(i).getNombre(),h,d);
+               
+            } else if(reserva.get(i)==null){         
                 tabla.setValueAt("Libre", h, d);
+                
             }
+           
             h++;
-            if (h == 14) {
+           if (h == 14) {
                 h = 0;
                 d++;
             }
-        }
+          }
 
     }
 

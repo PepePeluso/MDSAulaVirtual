@@ -39,7 +39,7 @@ public class frmRegistrarAulaVirtual extends javax.swing.JFrame {
     
     public void setAulaVirtual (AulaVirtual aula){
         av = aula;
-        av.tablaReservas(modeloHorario);
+        aula.tablaReservas(modeloHorario);
     }
     public void setUsuario (int num){
         u =num ;
@@ -245,7 +245,9 @@ public class frmRegistrarAulaVirtual extends javax.swing.JFrame {
             ubicacionVentana = this.getLocationOnScreen();
             frmAulaVirtul fav = new frmAulaVirtul();
             fav.setLocation(ubicacionVentana);
+            fav.setAulaVirtual(av);
             fav.setVisible(true);
+           
             this.dispose();
         }
         
