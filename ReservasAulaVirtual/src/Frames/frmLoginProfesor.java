@@ -57,6 +57,7 @@ public class frmLoginProfesor extends javax.swing.JFrame implements Serializable
         rSMaterialButtonRound1 = new rojerusan.RSMaterialButtonRound();
         chkMostrarContra = new javax.swing.JCheckBox();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -153,6 +154,9 @@ public class frmLoginProfesor extends javax.swing.JFrame implements Serializable
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Usuario");
         rSPanelGradiente1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 400, -1));
+
+        jLabel4.setText("D más Cédula");
+        rSPanelGradiente1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 274, -1, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -262,6 +266,7 @@ public class frmLoginProfesor extends javax.swing.JFrame implements Serializable
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPasswordField pswContrasenaProfesor;
     private rojerusan.RSMaterialButtonRound rSMaterialButtonRound1;
     private rspanelgradiente.RSPanelGradiente rSPanelGradiente1;
