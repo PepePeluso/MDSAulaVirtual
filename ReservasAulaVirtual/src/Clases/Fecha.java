@@ -29,6 +29,9 @@ public class Fecha implements Serializable{
          mes=(fecha.get(Calendar.MONTH)+1);
          dia=fecha.get(Calendar.DAY_OF_MONTH);
     }
+   public String fe(){
+   return dia+"/"+mes+"/"+ano;
+   }
    /** @pdOid ff51c172-4534-48c1-b74c-72fb3db3d557 */
    public int getDia() {
       return dia;

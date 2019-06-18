@@ -27,6 +27,7 @@ public class frmRegistrarAulaVirtual1 extends javax.swing.JFrame implements Seri
     int x, y;
     Point ubicacionVentana;
     DefaultTableModel modeloHorario;
+    DefaultTableModel maestro;
     AulaVirtual av;
     int u;
     public frmRegistrarAulaVirtual1() {
@@ -44,10 +45,26 @@ public class frmRegistrarAulaVirtual1 extends javax.swing.JFrame implements Seri
     public void setAulaVirtual (AulaVirtual aula){
         av = aula;
         aula.tablaReservas(modeloHorario);
+        TablaMaestros();
     }
-    public void setUsuario (int num){
-        u =num ;
-       }
+      public  void TablaMaestros(){
+    String Cabecera3[]={"Nombre","Cedula","Año de Nacimineto","Facultad","titulo"};    
+        maestro=new DefaultTableModel(null,Cabecera3);
+        jTable1.setModel(maestro);
+        
+        for (int i = 0; i < av.getProfesores().size(); i++) {
+            maestro.addRow(new Object[]{
+               av.getProfesores().get(i).getNombre(),
+                av.getProfesores().get(i).getCedula(),
+                av.getProfesores().get(i).getFechaNacimiento().fe(),
+                av.getProfesores().get(i).getFacultad(),
+                av.getProfesores().get(i).getTitulo()
+           
+            });
+        }
+        
+    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,6 +84,9 @@ public class frmRegistrarAulaVirtual1 extends javax.swing.JFrame implements Seri
         jScrollPane3 = new javax.swing.JScrollPane();
         tblHorario = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -117,7 +137,7 @@ public class frmRegistrarAulaVirtual1 extends javax.swing.JFrame implements Seri
                 btnAgregarHorarioActionPerformed(evt);
             }
         });
-        rSPanelGradiente1.add(btnAgregarHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, -1, 20));
+        rSPanelGradiente1.add(btnAgregarHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, -1, 20));
 
         jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
@@ -165,8 +185,28 @@ public class frmRegistrarAulaVirtual1 extends javax.swing.JFrame implements Seri
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Reservas de Aula Virtual");
-        rSPanelGradiente1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 750, -1));
+        jLabel7.setText("Profesores Reguitrados");
+        rSPanelGradiente1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 750, -1));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        rSPanelGradiente1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 760, 90));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Reservas de Aula Virtual");
+        rSPanelGradiente1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 750, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -254,8 +294,11 @@ public class frmRegistrarAulaVirtual1 extends javax.swing.JFrame implements Seri
     private javax.swing.JLabel btnCerrar;
     private javax.swing.JLabel btnMinimizar;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTable1;
     private rspanelgradiente.RSPanelGradiente rSPanelGradiente1;
     private javax.swing.JTable tblHorario;
     // End of variables declaration//GEN-END:variables
