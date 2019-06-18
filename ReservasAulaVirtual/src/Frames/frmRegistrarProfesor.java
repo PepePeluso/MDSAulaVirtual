@@ -6,7 +6,11 @@
 package Frames;
 
 import Clases.AulaVirtual;
+import Clases.Fecha;
+import Clases.Login;
+import Clases.Profesor;
 import java.awt.Point;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -234,13 +238,27 @@ public class frmRegistrarProfesor extends javax.swing.JFrame {
             frmAulaVirtul fav = new frmAulaVirtul();
             fav.setLocation(ubicacionVentana);
             fav.setVisible(true);
+            fav.setAulaVirtual(av);
             this.dispose();
         }
         
     }//GEN-LAST:event_btnAtrasMouseClicked
 
     private void rSMaterialButtonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRound1ActionPerformed
-        // TODO add your handling code here:
+        try {
+           if(pswRegistrarContrasena.getText().equals(pswVerificarContrasena.getText())){
+      Profesor profesor=new Profesor(txtNombre.getText(), txtCedula.getText(), new Fecha(dchFechaNacimiento.getCalendar().get(Calendar.DAY_OF_MONTH), dchFechaNacimiento.getCalendar().get(Calendar.MONTH)+1, dchFechaNacimiento.getCalendar().get(Calendar.YEAR)), jComboBox1.getSelectedItem().toString(), txtTitulo1.getText(),new Login(txtCedula.getText(), pswRegistrarContrasena.getText()));
+      if(profesor.validar()){
+      av.AgregarProfesor(profesor);
+      }
+           }else{
+      JOptionPane.showMessageDialog(null, "La contraseña no coinsiden");
+      } 
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, "Datos incompletos");
+        }
+        
+        
     }//GEN-LAST:event_rSMaterialButtonRound1ActionPerformed
 
     private void chkMostrarContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMostrarContraActionPerformed

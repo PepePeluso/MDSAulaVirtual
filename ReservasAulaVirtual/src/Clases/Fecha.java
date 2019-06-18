@@ -9,7 +9,7 @@ package Clases;
 import java.util.*;
 
 /** @pdOid 8b370bcb-aef6-499f-a864-5148be90f1a0 */
-public class Fecha implements Validaciones {
+public class Fecha {
    /** @pdOid c4605254-b659-4c35-9235-aeb7a59dea02 */
    private int dia;
    /** @pdOid 7136443f-498f-4efa-8147-65608890eae1 */
@@ -61,9 +61,6 @@ public class Fecha implements Validaciones {
       ano = newAno;
    }
 
-    @Override
-    public boolean validar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
 }

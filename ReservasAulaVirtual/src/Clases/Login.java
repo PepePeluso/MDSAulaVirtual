@@ -56,11 +56,9 @@ public class Login implements Validaciones {
             if (this.contrasena.equals(contrasena)) {
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "Contraseña incorrecto");
                 return false;
             }
         } else {
-            JOptionPane.showMessageDialog(null, " Usuario incorrecto");
             return false;
         }
 

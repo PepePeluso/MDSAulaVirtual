@@ -200,7 +200,7 @@ public class frmLoginProfesor extends javax.swing.JFrame {
         try {
              for (int i = 0; i < av.getProfesores().size(); i++) {
             if (av.getProfesores().get(i).getLogin().comparar(txtUsuarioProfesor.getText(),
-                    pswContrasenaProfesor.getText())){
+                pswContrasenaProfesor.getText())){
                 ubicacionVentana = this.getLocationOnScreen();
                 frmRegistrarAulaVirtual rav = new frmRegistrarAulaVirtual();
                 rav.setAulaVirtual(av);
@@ -208,6 +208,8 @@ public class frmLoginProfesor extends javax.swing.JFrame {
                 rav.setLocation(ubicacionVentana);
                 rav.setVisible(true);
                 this.dispose();
+            }else{
+            JOptionPane.showMessageDialog(null, "Usuario o Contraseña Incorrecto");
             }
         }
         } catch (Exception e) {

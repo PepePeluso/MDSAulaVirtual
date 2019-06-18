@@ -101,14 +101,14 @@ public class Profesor implements Validaciones {
 
     @Override
     public boolean validar() {
-        if(verificarCedula(cedula)){     
+        if(!verificarCedula(cedula)){     
             return false;
         }
         if(!(calcularEdad()>=24)){
         JOptionPane.showMessageDialog(null, "Su edad debe ser mayor o igual a 24");
         return false;
         }
-        if(login.validar()){
+        if(!login.validar()){
         return false;
         }
         return true;
