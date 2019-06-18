@@ -272,7 +272,7 @@ public class frmRegistrarProfesor extends javax.swing.JFrame implements Serializ
     private void rSMaterialButtonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRound1ActionPerformed
         try {
            if(pswRegistrarContrasena.getText().equals(pswVerificarContrasena.getText())){
-      Profesor profesor=new Profesor(txtNombre.getText(), txtCedula.getText(), new Fecha(dchFechaNacimiento.getCalendar().get(Calendar.DAY_OF_MONTH), dchFechaNacimiento.getCalendar().get(Calendar.MONTH)+1, dchFechaNacimiento.getCalendar().get(Calendar.YEAR)), jComboBox1.getSelectedItem().toString(), txtTitulo1.getText(),new Login(txtCedula.getText(), pswRegistrarContrasena.getText()));
+      Profesor profesor=new Profesor(txtNombre.getText(), txtCedula.getText(), new Fecha(dchFechaNacimiento.getCalendar().get(Calendar.DAY_OF_MONTH), dchFechaNacimiento.getCalendar().get(Calendar.MONTH)+1, dchFechaNacimiento.getCalendar().get(Calendar.YEAR)), jComboBox1.getSelectedItem().toString(), txtTitulo1.getText(),new Login("D"+txtCedula.getText(), pswRegistrarContrasena.getText()));
       if(profesor.validar()){
       av.AgregarProfesor(profesor);
       }

@@ -204,7 +204,7 @@ public class frmLoginAdministrador extends javax.swing.JFrame implements Seriali
     }//GEN-LAST:event_btnAtrasMouseClicked
 
     private void rSMaterialButtonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRound1ActionPerformed
-       if("1004291447".equals(txtUsuarioAdmin.getText())&&"123456789".equals(pswContrasenaAdmin.getText())){
+       if("A1004291447".equals(txtUsuarioAdmin.getText())&&"123456789".equals(pswContrasenaAdmin.getText())){
        JOptionPane.showMessageDialog(null,"Bienvenido");
        ubicacionVentana = this.getLocationOnScreen();
                 frmRegistrarAulaVirtual1 rav = new frmRegistrarAulaVirtual1();
