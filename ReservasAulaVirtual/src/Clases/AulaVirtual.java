@@ -155,7 +155,7 @@ public class AulaVirtual implements Serializable {
                 tabla.setValueAt(reserva.get(i).getNombre(),h,d);
                
             } else if(reserva.get(i)==null){         
-                tabla.setValueAt("Libre", h, d);
+                tabla.setValueAt(" ", h, d);
                 
             }
            
