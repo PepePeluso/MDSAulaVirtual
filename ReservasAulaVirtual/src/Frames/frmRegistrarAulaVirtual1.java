@@ -6,34 +6,49 @@
 package Frames;
 
 import Clases.AulaVirtual;
+import Clases.Reserva;
 import java.awt.Point;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Pepe Peluso
  */
-public class frmLoginAdministrador extends javax.swing.JFrame implements Serializable {
+public class frmRegistrarAulaVirtual1 extends javax.swing.JFrame implements Serializable{
 
     /**
      * Creates new form frmAulaVirtul
      */
     int x, y;
     Point ubicacionVentana;
+    DefaultTableModel modeloHorario;
     AulaVirtual av;
-    public frmLoginAdministrador() {
+    int u;
+    public frmRegistrarAulaVirtual1() {
         initComponents();
         rsutilities.RSUtilities.setMoverVentana(this);
         rsutilities.RSUtilities.setOpaqueVentana(this, false);
+        modelo();
         av = null;
     }
-
-    public void setAulaVirtual(AulaVirtual aula) {
-        av = aula;
+    
+    private void modelo(){
+        modeloHorario = (DefaultTableModel) tblHorario.getModel();
     }
+    
+    public void setAulaVirtual (AulaVirtual aula){
+        av = aula;
+        aula.tablaReservas(modeloHorario);
+    }
+    public void setUsuario (int num){
+        u =num ;
+       }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,14 +62,11 @@ public class frmLoginAdministrador extends javax.swing.JFrame implements Seriali
         btnAtras = new javax.swing.JLabel();
         btnCerrar = new javax.swing.JLabel();
         btnMinimizar = new javax.swing.JLabel();
-        rSPanelImage1 = new rojerusan.RSPanelImage();
-        jLabel1 = new javax.swing.JLabel();
-        txtUsuarioAdmin = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        pswContrasenaAdmin = new javax.swing.JPasswordField();
-        rSMaterialButtonRound1 = new rojerusan.RSMaterialButtonRound();
-        chkMostrarContra = new javax.swing.JCheckBox();
-        jLabel3 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        btnAgregarHorario = new rojerusan.RSButtonRound();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblHorario = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -97,60 +109,64 @@ public class frmLoginAdministrador extends javax.swing.JFrame implements Seriali
             }
         });
         rSPanelGradiente1.add(btnMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 20, 20));
+        rSPanelGradiente1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 760, 10));
 
-        rSPanelImage1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconfinder_log-in_2561252 (1).png"))); // NOI18N
-
-        javax.swing.GroupLayout rSPanelImage1Layout = new javax.swing.GroupLayout(rSPanelImage1);
-        rSPanelImage1.setLayout(rSPanelImage1Layout);
-        rSPanelImage1Layout.setHorizontalGroup(
-            rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-        rSPanelImage1Layout.setVerticalGroup(
-            rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-
-        rSPanelGradiente1.add(rSPanelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, -1, -1));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Contraseña");
-        rSPanelGradiente1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 400, -1));
-
-        txtUsuarioAdmin.setBorder(null);
-        rSPanelGradiente1.add(txtUsuarioAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 400, 20));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Usuario");
-        rSPanelGradiente1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 400, -1));
-
-        pswContrasenaAdmin.setBorder(null);
-        rSPanelGradiente1.add(pswContrasenaAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 400, 20));
-
-        rSMaterialButtonRound1.setText("Log in");
-        rSMaterialButtonRound1.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarHorario.setText("Reiniciar Reserva");
+        btnAgregarHorario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSMaterialButtonRound1ActionPerformed(evt);
+                btnAgregarHorarioActionPerformed(evt);
             }
         });
-        rSPanelGradiente1.add(rSMaterialButtonRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 480, 410, 40));
+        rSPanelGradiente1.add(btnAgregarHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, -1, 20));
 
-        chkMostrarContra.setBackground(new java.awt.Color(255, 255, 255));
-        chkMostrarContra.setText("Mostrar Contraseña");
-        chkMostrarContra.setBorder(null);
-        chkMostrarContra.setFocusable(false);
-        chkMostrarContra.setOpaque(false);
-        chkMostrarContra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkMostrarContraActionPerformed(evt);
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        tblHorario.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"07H00 - 08H00", null, null, null, null, null},
+                {"08H00 - 09H00", null, null, null, null, null},
+                {"09H00 - 10H00", null, null, null, null, null},
+                {"10H00 - 11H00", null, null, null, null, null},
+                {"11H00 - 12H00", null, null, null, null, null},
+                {"12H00 - 13H00", null, null, null, null, null},
+                {"13H00 - 14H00", null, null, null, null, null},
+                {"14H00 - 15H00", null, null, null, null, null},
+                {"15H00 - 16H00", null, null, null, null, null},
+                {"16H00 - 17H00", null, null, null, null, null},
+                {"17H00 - 18H00", null, null, null, null, null},
+                {"18H00 - 19H00", null, null, null, null, null},
+                {"19H00 - 20H00", null, null, null, null, null},
+                {"20H00 - 21H00", null, null, null, null, null}
+            },
+            new String [] {
+                "", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        rSPanelGradiente1.add(chkMostrarContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, -1, -1));
+        jScrollPane3.setViewportView(tblHorario);
+        if (tblHorario.getColumnModel().getColumnCount() > 0) {
+            tblHorario.getColumnModel().getColumn(0).setResizable(false);
+            tblHorario.getColumnModel().getColumn(1).setResizable(false);
+            tblHorario.getColumnModel().getColumn(2).setResizable(false);
+            tblHorario.getColumnModel().getColumn(3).setResizable(false);
+            tblHorario.getColumnModel().getColumn(4).setResizable(false);
+            tblHorario.getColumnModel().getColumn(5).setResizable(false);
+        }
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Administrador");
-        rSPanelGradiente1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 150, -1));
+        rSPanelGradiente1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 760, 250));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Reservas de Aula Virtual");
+        rSPanelGradiente1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 750, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -168,6 +184,20 @@ public class frmLoginAdministrador extends javax.swing.JFrame implements Seriali
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAgregarHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarHorarioActionPerformed
+        try {
+            ArrayList<Reserva> re=new ArrayList<>(70);
+            for (int i = 0; i < 70; i++) {
+               re.add(null);
+            }
+           av.setReserva(re);
+           av.tablaReservas(modeloHorario);
+        } catch (Exception e) {
+           
+        }
+
+    }//GEN-LAST:event_btnAgregarHorarioActionPerformed
+
     private void btnMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizarMouseClicked
         // TODO add your handling code here:
         this.setExtendedState(ICONIFIED);
@@ -176,56 +206,34 @@ public class frmLoginAdministrador extends javax.swing.JFrame implements Seriali
     private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
         // TODO add your handling code here:
         int conf = JOptionPane.showConfirmDialog(null, "Está seguro de cerrar el programa",
-                "Opción", JOptionPane.YES_NO_OPTION);
+            "Opción", JOptionPane.YES_NO_OPTION);
         if (conf == 0) {
             try {
-            ObjectOutputStream Guardar = new ObjectOutputStream(new FileOutputStream("archivo.conc"));
-            Guardar.writeObject(av);
-            Guardar.close();
-        } catch (Exception e) {
-        }
+                ObjectOutputStream Guardar = new ObjectOutputStream(new FileOutputStream("archivo.conc"));
+                Guardar.writeObject(av);
+                Guardar.close();
+            } catch (Exception e) {
+            }
             System.exit(0);
-            
+
         }
     }//GEN-LAST:event_btnCerrarMouseClicked
 
     private void btnAtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAtrasMouseClicked
         // TODO add your handling code here:
         int conf = JOptionPane.showConfirmDialog(null, "Está seguro de volver a "
-                + "la pantalla principal", "Opción", JOptionPane.YES_NO_OPTION);
+            + "la pantalla principal", "Opción", JOptionPane.YES_NO_OPTION);
         if (conf == 0) {
             ubicacionVentana = this.getLocationOnScreen();
             frmAulaVirtul fav = new frmAulaVirtul();
             fav.setLocation(ubicacionVentana);
+            fav.setAulaVirtual(av);
             fav.setVisible(true);
+
             this.dispose();
         }
-        
+
     }//GEN-LAST:event_btnAtrasMouseClicked
-
-    private void rSMaterialButtonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRound1ActionPerformed
-       if("1004291447".equals(txtUsuarioAdmin.getText())&&"123456789".equals(pswContrasenaAdmin.getText())){
-       JOptionPane.showMessageDialog(null,"Bienvenido");
-       ubicacionVentana = this.getLocationOnScreen();
-                frmRegistrarAulaVirtual1 rav = new frmRegistrarAulaVirtual1();
-                rav.setAulaVirtual(av);               
-                rav.setLocation(ubicacionVentana);
-                rav.setVisible(true);
-                this.dispose();
-       }else{
-    JOptionPane.showMessageDialog(null,"Usurio o contraseña incorrecta");
-    }
-           
-    }//GEN-LAST:event_rSMaterialButtonRound1ActionPerformed
-
-    private void chkMostrarContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMostrarContraActionPerformed
-        // TODO add your handling code here:
-        if (chkMostrarContra.isSelected()){
-            pswContrasenaAdmin.setEchoChar((char)0);
-        } else {
-            pswContrasenaAdmin.setEchoChar('*');
-        }
-    }//GEN-LAST:event_chkMostrarContraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,23 +243,20 @@ public class frmLoginAdministrador extends javax.swing.JFrame implements Seriali
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmLoginAdministrador().setVisible(true);
+                new frmRegistrarAulaVirtual1().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private rojerusan.RSButtonRound btnAgregarHorario;
     private javax.swing.JLabel btnAtras;
     private javax.swing.JLabel btnCerrar;
     private javax.swing.JLabel btnMinimizar;
-    private javax.swing.JCheckBox chkMostrarContra;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField pswContrasenaAdmin;
-    private rojerusan.RSMaterialButtonRound rSMaterialButtonRound1;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
     private rspanelgradiente.RSPanelGradiente rSPanelGradiente1;
-    private rojerusan.RSPanelImage rSPanelImage1;
-    private javax.swing.JTextField txtUsuarioAdmin;
+    private javax.swing.JTable tblHorario;
     // End of variables declaration//GEN-END:variables
 }
