@@ -6,11 +6,12 @@ package Clases;
  * Purpose: Defines the Class Profesor
  ***********************************************************************/
 
+import java.io.Serializable;
 import java.util.*;
 import javax.swing.JOptionPane;
 
 /** @pdOid 9cbfc43a-edb7-47a5-9d87-1fe7bde27c0e */
-public class Profesor implements Validaciones {
+public class Profesor implements Validaciones, Serializable {
    /** @pdOid e2f96d6b-1172-413f-96b2-f868dc773c22 */
    private String nombre;
    /** @pdOid 69037daa-57fd-455b-ba69-d16ac02253d3 */

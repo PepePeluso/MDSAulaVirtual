@@ -6,6 +6,7 @@ package Clases;
  * AulaVirtual
  * *********************************************************************
  */
+import java.io.Serializable;
 import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -13,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 /**
  * @pdOid 020888c3-71dd-41eb-8ce2-c13dc4ad9836
  */
-public class AulaVirtual {
+public class AulaVirtual implements Serializable {
 
     /**
      * @pdOid ccc4311f-7a96-47de-a0ac-d9c98ed8878e

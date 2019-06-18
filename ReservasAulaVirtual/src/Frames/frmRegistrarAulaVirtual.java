@@ -8,6 +8,8 @@ package Frames;
 import Clases.AulaVirtual;
 import Clases.Reserva;
 import java.awt.Point;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -234,6 +236,12 @@ public class frmRegistrarAulaVirtual extends javax.swing.JFrame {
                 "Opción", JOptionPane.YES_NO_OPTION);
         if (conf == 0) {
             System.exit(0);
+            try {
+            ObjectOutputStream Guardar = new ObjectOutputStream(new FileOutputStream("archivo.conc"));
+            Guardar.writeObject(av);
+            Guardar.close();
+        } catch (Exception e) {
+        }
         }
     }//GEN-LAST:event_btnCerrarMouseClicked
 

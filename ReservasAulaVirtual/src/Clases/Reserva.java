@@ -6,11 +6,12 @@ package Clases;
  * Purpose: Defines the Class Reserva
  ***********************************************************************/
 
+import java.io.Serializable;
 import java.util.*;
 import javax.swing.JOptionPane;
 
 /** @pdOid 8e87daa4-f348-42ec-b75f-cc487f0d58d2 */
-public class Reserva implements Validaciones {
+public class Reserva implements Validaciones, Serializable {
    /** @pdOid bb87a828-0ba1-4dce-94e8-e7a6fadd3e3e */
    private String dia;
    /** @pdOid 2dd079be-2f53-45df-844c-894c975c732c */

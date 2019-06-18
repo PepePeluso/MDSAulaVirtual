@@ -10,6 +10,10 @@ import Clases.Fecha;
 import Clases.Login;
 import Clases.Profesor;
 import java.awt.Point;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,7 +37,14 @@ public class frmAulaVirtul extends javax.swing.JFrame {
         rsutilities.RSUtilities.setMoverVentana(this);
         rsutilities.RSUtilities.setOpaqueVentana(this, false);
         pnlLogoUTN.requestFocus();
-        av = new AulaVirtual();
+         try {
+           ObjectInputStream abrir=new ObjectInputStream(new FileInputStream("archivo.conc"));
+           av= (AulaVirtual)abrir.readObject();
+           abrir.close();
+            } catch (Exception e) {
+            av = new AulaVirtual();    
+       }
+        
         av.AgregarProfesor(p);
     }
    public void setAulaVirtual (AulaVirtual aula){
@@ -213,6 +224,12 @@ public class frmAulaVirtul extends javax.swing.JFrame {
                 "Confirmación", JOptionPane.YES_NO_OPTION);
         if (conf == 0){
             System.exit(0);
+            try {
+            ObjectOutputStream Guardar = new ObjectOutputStream(new FileOutputStream("archivo.conc"));
+            Guardar.writeObject(av);
+            Guardar.close();
+        } catch (Exception e) {
+        }
         }
     }//GEN-LAST:event_btnCerrarMouseClicked
 

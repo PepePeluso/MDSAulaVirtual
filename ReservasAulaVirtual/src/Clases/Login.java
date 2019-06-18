@@ -7,12 +7,13 @@ package Clases;
  * Purpose: Defines the Class Login
  ********************************************************************** */
 
+import java.io.Serializable;
 import javax.swing.JOptionPane;
 
 /**
  * @pdOid c0c73f58-2c2e-4f40-9f50-0991c2b14720
  */
-public class Login implements Validaciones {
+public class Login implements Validaciones, Serializable {
 
     /**
      * @pdOid cf8b2209-35fa-4001-853f-daaab0ed8ba5

@@ -10,6 +10,8 @@ import Clases.Fecha;
 import Clases.Login;
 import Clases.Profesor;
 import java.awt.Point;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -226,6 +228,12 @@ public class frmRegistrarProfesor extends javax.swing.JFrame {
                 "Opción", JOptionPane.YES_NO_OPTION);
         if (conf == 0) {
             System.exit(0);
+            try {
+            ObjectOutputStream Guardar = new ObjectOutputStream(new FileOutputStream("archivo.conc"));
+            Guardar.writeObject(av);
+            Guardar.close();
+        } catch (Exception e) {
+        }
         }
     }//GEN-LAST:event_btnCerrarMouseClicked
 
