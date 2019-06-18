@@ -197,6 +197,7 @@ public class frmLoginProfesor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtrasMouseClicked
 
     private void rSMaterialButtonRound1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRound1ActionPerformed
+        boolean j=true;
         try {
              for (int i = 0; i < av.getProfesores().size(); i++) {
             if (av.getProfesores().get(i).getLogin().comparar(txtUsuarioProfesor.getText(),
@@ -208,10 +209,13 @@ public class frmLoginProfesor extends javax.swing.JFrame {
                 rav.setLocation(ubicacionVentana);
                 rav.setVisible(true);
                 this.dispose();
-            }else{
-            JOptionPane.showMessageDialog(null, "Usuario o Contraseña Incorrecto");
+                j=false;
+                
             }
         }
+          if(j)
+            JOptionPane.showMessageDialog(null, "Usuario o Contraseña Incorrecto");
+            
         } catch (Exception e) {
         }
        

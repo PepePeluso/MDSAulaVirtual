@@ -25,15 +25,16 @@ public class frmAulaVirtul extends javax.swing.JFrame {
     Point ubicacionVentana;
     AulaVirtual av;
     
-    
-    
+    Fecha f = new Fecha();
+    Login l = new Login("1750112938", "1750112938");
+    Profesor p = new Profesor("P", "1750112938", f, "FICA", "D", l);
     public frmAulaVirtul() {
         initComponents();
         rsutilities.RSUtilities.setMoverVentana(this);
         rsutilities.RSUtilities.setOpaqueVentana(this, false);
         pnlLogoUTN.requestFocus();
         av = new AulaVirtual();
-       
+        av.AgregarProfesor(p);
     }
    public void setAulaVirtual (AulaVirtual aula){
         av = aula;

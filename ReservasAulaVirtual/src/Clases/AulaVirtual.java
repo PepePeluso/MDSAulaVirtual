@@ -89,7 +89,7 @@ public class AulaVirtual {
         }
 
         if ((this.reserva.get(Dia(reserva.getDia()) + (reserva.getInicio() - 7)) == null) && (this.reserva.get(Dia(reserva.getDia()) + (reserva.getFin() - 8)) == null)) {
-            this.reserva.remove(Dia(reserva.getDia()) + (reserva.getFin() - 7));
+            this.reserva.remove(Dia(reserva.getDia()) + (reserva.getInicio()- 7));
             this.reserva.add(Dia(reserva.getDia()) + (reserva.getInicio() - 7), reserva);
             this.reserva.remove(Dia(reserva.getDia()) + (reserva.getFin() - 8));
             this.reserva.add(Dia(reserva.getDia()) + (reserva.getFin() - 8), reserva);
